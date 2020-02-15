@@ -9,7 +9,7 @@ int n;
 int W;
 int w[MAX_N], v[MAX_N];
 int ans;
-int dp[MAX_N][MAX_W];
+int dp[MAX_N+1][MAX_W+1];
 
 int solve1(int i, int j) {
   //深度搜索
@@ -47,6 +47,20 @@ int solve2(int i, int j) {
   return ans;
 }
 
+int solve3() {
+  for (int i = n-1; i >=0; --i) {
+    for (int j = 0; j <= W; ++j) {
+      if (j < w[i]) {
+        dp[i][j] = dp[i+1][j];
+      }
+      else {
+        dp[i][j] = max(dp[i+1][j], dp[i+1][j-w[i]]+v[i]);
+      }
+    }
+  }
+  return dp[0][W];
+}
+
 int main() {
   cin >> n;
   for (int i = 0; i < n; ++i) {
@@ -60,12 +74,21 @@ int main() {
   // cout << ans << endl;
 
   //记忆化搜索
-  for (int i = 0; i < MAX_N; ++i) {
-    for (int j = 0; j < MAX_W; ++j) {
-      dp[i][j] = -1;
+  // for (int i = 0; i < MAX_N+1; ++i) {
+  //   for (int j = 0; j < MAX_W+1; ++j) {
+  //     dp[i][j] = -1;
+  //   }
+  // }
+  // int ans = solve2(0, W);
+  // cout << ans << endl;
+
+  //dp
+  for (int i = 0; i < MAX_N+1; ++i) {
+    for (int j = 0; j < MAX_W+1; ++j) {
+      dp[i][j] = 0;
     }
   }
-  int ans = solve2(0, W);
+  int ans = solve3();
   cout << ans << endl;
   return 0;
 }
