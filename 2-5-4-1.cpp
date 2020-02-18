@@ -30,10 +30,6 @@ void dijkstra(int s) {
     for (int i = 0; i < G[v].size(); ++i) {
       dist[G[v][i]] = min(dist[G[v][i]], dist[v] + cost[v][G[v][i]]); 
     }
-    for (int i = 0; i < V; ++i) {
-      cout << dist[i] << " ";
-    }
-    cout << endl;
   }
 }
 
