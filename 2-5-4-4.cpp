@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -41,6 +42,16 @@ void dijkstra(int s) {
   }
 }
 
+vector<int> get_path(int t) {
+  vector<int> path;
+  while (t != -1) {
+    path.push_back(t);
+    t = pre[t];
+  }
+  reverse(path.begin(), path.end());
+  return path;
+}
+
 int main() {
   cin >> V >> E;
   for (int i = 0; i < V; ++i) {
@@ -67,9 +78,10 @@ int main() {
   }
   cout << endl;
   cout << dist[T] << endl;
-  while (T != -1) {
-    cout << T << " ";
-    T = pre[T];
+  vector<int> path;
+  path = get_path(T);
+  for (int i = 0; i < path.size(); ++i) {
+    cout << path[i] << " ";
   }
   cout << endl;
   return 0;
