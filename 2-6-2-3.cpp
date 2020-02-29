@@ -25,11 +25,25 @@ int solve(ll a, ll b) {
       for (ll j = 2*i; j*j < b; j += i) {
         is_prime_min[j] = false;
       }
-      for (ll j = (a/i+1)*i; j < b; j += i) {
+      ll tmp = 0;
+      if (a % i == 0) {
+        tmp = a;
+      }
+      else {
+        tmp = (a/i + 1) * i;
+      }
+      for (ll j = tmp; j < b; j += i) {
         is_prime[j-a] = false;
       }
     }
   }
+  ll ans = 0;
+  for (ll i = 0; i < b-a; ++i) {
+    if (is_prime[i]) {
+      ans++;
+    }
+  }
+  return ans;
 }
 
 int main(){
