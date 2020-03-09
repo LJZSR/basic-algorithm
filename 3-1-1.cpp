@@ -8,15 +8,15 @@ int n, k;
 int a[MAX_N];
 
 int solve() {
-  int first = -1;
-  int last = n-1;
-  while (last - first > 1) {
+  int first = 0;
+  int last = n;
+  while (last != first) {
     int mid = (first + last) / 2;
     if (a[mid] >= k) {
       last = mid;
     }
     else {
-      first = mid;
+      first = mid+1;
     }
   }
   return last;
