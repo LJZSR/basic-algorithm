@@ -23,11 +23,11 @@ bool judge(int c) {
 
 int solve() {
   sort(X, X + N);
-  int lb = -1, ub = N;
-  while (ub - lb > 1) {
+  int lb = 0, ub = N;
+  while (ub != lb) {
     int mid = (lb + ub) / 2;
     if (judge(mid)) {
-      lb = mid - 1;
+      lb = mid;
     }
     else {
       ub = mid - 1;
