@@ -32,7 +32,7 @@ int solve1() {
     sum[i] = sum[i-1] + a[i-1];
   }
   if (sum[n] < S) return 0;
-  int ans = n;
+  int ans = n+1;
   for (int i = 0; i <n; ++i) {
     int target = S + sum[i];
     int j = bSearch(target, i+1);
@@ -43,13 +43,37 @@ int solve1() {
   return ans;
 }
 
+int solve2() {
+  int ans = n + 1;
+  int i = 0, j = 0;
+  int sum = 0;
+  while (j <= n) {
+    if (sum >= S) {
+      ans = min(ans, j - i);
+      sum -= a[i];
+      ++i;
+    }
+    else {
+      if (j != n) {
+        sum += a[j];
+      }
+      ++j;
+    }
+  }
+  if (ans == n+1) {
+    return 0;
+  }
+  return ans;
+}
+
 int main() {
   cin >> n >> S;
   for (int i = 0; i < n; ++i) {
     cin >> a[i];
   }
 
-  int ans = solve1();
+  // int ans = solve1();
+  int ans = solve2();
   cout << ans << endl;
   return 0;
 }
