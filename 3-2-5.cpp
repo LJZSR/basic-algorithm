@@ -25,11 +25,7 @@ void dfs(int x, int y) {
 }
 
 int solve1() {
-  for (int i = 0; i < w; ++i) {
-    for (int j = 0; j < h; ++j) {
-      map[i][j] = 0;
-    }
-  }
+  memset(map, 0, w * h);
   for (int i = 0; i < n; ++i) {
     if (x1[i] == x2[i]) {
       int begin = y1[i] < y2[i] ? y1[i] : y2[i];
@@ -58,6 +54,10 @@ int solve1() {
   return ans;
 }
 
+int solve2() {
+  return 1;
+}
+
 int main() {
   cin >> w >> h >> n;
   for (int i = 0; i < n; ++i) {
@@ -77,6 +77,7 @@ int main() {
     y2[i]--;
   }
   int ans = solve1();
+  // int ans = solve2();
   cout << ans << endl;
   return 0;
 }
