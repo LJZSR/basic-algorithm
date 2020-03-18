@@ -25,28 +25,28 @@ void solve() {
   }
   for (int i = 0; i < M; ++i) {
     int l = I[i], r = J[i]+1, k = K[i];
-    int lb = -1, rb = N-1;
+    int lb = 0, rb = N;
     while (rb - lb > 1) {
       int mid = (rb + lb) / 2;
       int x = nums[mid];
       int tl = l, tr = r, c = 0;
       while (tl < tr && tl % B != 0) {
-        if (A[tl] <= x) ++c;
+        if (A[tl] < x) ++c;
         ++tl;
       }
       while (tl < tr && tr % B != 0) {
         --tr;
-        if (A[tr] <= x) ++c;
+        if (A[tr] < x) ++c;
       }
       while (tl < tr) {
         int b = tl / B;
-        c += upper_bound(Buckets[b].begin(), Buckets[b].end(), x) - Buckets[b].begin();
+        c += lower_bound(Buckets[b].begin(), Buckets[b].end(), x) - Buckets[b].begin();
         tl += B;
       }
-      if (c >= k) rb = mid;
+      if (c > k-1) rb = mid;
       else lb = mid;
     }
-    std::cout << nums[rb] << endl;
+    std::cout << nums[lb] << endl;
   }
 }
 
