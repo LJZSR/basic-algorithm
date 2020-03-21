@@ -72,9 +72,9 @@ int main() {
     vy[i] = L[i];
     angle[i] = M_PI;
   }
-  for (int i = 0; i < C; ++i) {
-    solve2(S[i], A[i]);
-  }
+  // for (int i = 0; i < C; ++i) {
+  //   solve2(S[i], A[i]);
+  // }
   return 0;
 }
 
