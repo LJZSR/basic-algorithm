@@ -13,7 +13,7 @@ int n, m;
 int solve() {
   int *crt = dp[0], *next = dp[1];
   crt[0] = 1;
-  for (int i = n-1; i >= 0; --i) {
+  for (int i = n-1; i >= 0; --i) { 
     for (int j = m-1; j >= 0; --j) {
       for (int used = 0; used < (1 << m); ++used) {
         if (used >> j & 1 || color[i][j]) {
