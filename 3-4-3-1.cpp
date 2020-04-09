@@ -5,7 +5,7 @@ using namespace std;
 
 const int MAX_M = 500000;
 const int MAX_N = 50000;
-const int INF = MAX_N+1;
+const int INF = MAX_M+1;
 int s[MAX_M], t[MAX_M];
 int n, m;
 
