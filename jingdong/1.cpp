@@ -21,7 +21,7 @@ void conStr2Int(string str) {
         ++j;
       }
       if (j == 4 && ans >= 1000 && ans <= 3999) {
-        res.push_back(ans);
+        cout << ans << " ";
       }
       i = i + j;
     } else {
@@ -32,11 +32,10 @@ void conStr2Int(string str) {
 
 int main() {
   string in;
-  getline(cin, in);
-  conStr2Int(in);
-  for (int i = 0; i < res.size()-1; ++i) {
-    cout << res[i] << " ";
+  while (cin >> in)
+  {
+    conStr2Int(in);
   }
-  cout << res[res.size()-1] << endl;
+  
   return 0;
 }
